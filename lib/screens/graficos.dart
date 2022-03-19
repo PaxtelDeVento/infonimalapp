@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:infonimalapp/helpers/helper.dart';
+import 'package:infonimalapp/helpers/helperVivos.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import '../info.dart';
 

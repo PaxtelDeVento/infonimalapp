@@ -5,7 +5,7 @@ import 'dart:async';
 import 'package:path_provider/path_provider.dart';
 
 class DatabaseHelper {
-  //definir as colunas da tabela
+  //definir as colunas da tabelaW
   String animaisTable = 'animais';
   String colBrinco = 'brinco';
   String colPeso = 'peso';

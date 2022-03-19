@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:infonimalapp/helpers/helper.dart';
+import 'package:infonimalapp/helpers/helperVivos.dart';
 import 'package:infonimalapp/helpers/helperObito.dart';
 import 'package:infonimalapp/info.dart';
 import 'package:infonimalapp/models/animal.dart';
