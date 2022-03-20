@@ -19,8 +19,11 @@ class ListaAnimaisState extends State<ListaAnimais> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.red,
-        title: Text('Seus animais'),
+        backgroundColor: Colors.grey[700],
+        title: Text(
+          'Seus animais',
+          style: TextStyle(color: Colors.red),
+        ),
         centerTitle: true,
         actions: [info(context, infoLista)],
       ),

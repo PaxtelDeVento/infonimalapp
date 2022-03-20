@@ -119,8 +119,11 @@ class _GraficosState extends State<Graficos> {
       length: 3,
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.blue,
-          title: Text('Gráficos'),
+          backgroundColor: Colors.grey[700],
+          title: Text(
+            'Gráficos',
+            style: TextStyle(color: Colors.blue),
+          ),
           centerTitle: true,
           actions: [info(context, infoGraficos)],
           bottom: TabBar(

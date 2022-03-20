@@ -68,8 +68,11 @@ class TabelaState extends State<Tabela> {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.purple.shade600,
-          title: Text('Seus animais'),
+          backgroundColor: Colors.grey[700],
+          title: Text(
+            'Seus animais',
+            style: TextStyle(color: Colors.purple[200]),
+          ),
           centerTitle: true,
           actions: [
             info(context, infoTabela),

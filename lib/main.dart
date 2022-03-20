@@ -52,35 +52,34 @@ class MainPageState extends State<MainPage> {
           items: [
             BottomNavigationBarItem(
                 icon: currentIndex == 0
-                    ? Icon(Icons.list, color: Colors.black)
+                    ? Icon(Icons.list, color: Colors.red)
                     : Icon(Icons.list, color: Colors.white),
                 label: 'Animais',
-                backgroundColor: Colors.red),
+                backgroundColor: Colors.grey[700]),
             BottomNavigationBarItem(
-              icon: currentIndex == 1
-                  ? Icon(Icons.add, color: Colors.black)
-                  : Icon(Icons.add, color: Colors.white),
-              label: 'Novo',
-              backgroundColor: Colors.green.shade700,
-            ),
+                icon: currentIndex == 1
+                    ? Icon(Icons.add, color: Colors.green)
+                    : Icon(Icons.add, color: Colors.white),
+                label: 'Novo',
+                backgroundColor: Colors.grey[700]),
             BottomNavigationBarItem(
                 icon: currentIndex == 2
-                    ? Icon(Icons.home, color: Colors.black)
+                    ? Icon(Icons.home, color: Colors.orange)
                     : Icon(Icons.home, color: Colors.white),
                 label: 'Início',
-                backgroundColor: Colors.orange),
+                backgroundColor: Colors.grey[700]),
             BottomNavigationBarItem(
                 icon: currentIndex == 3
-                    ? Icon(Icons.pie_chart, color: Colors.black)
+                    ? Icon(Icons.pie_chart, color: Colors.blue)
                     : Icon(Icons.pie_chart, color: Colors.white),
-                label: 'Graficos',
-                backgroundColor: Colors.blue),
+                label: 'Gráficos',
+                backgroundColor: Colors.grey[700]),
             BottomNavigationBarItem(
                 icon: currentIndex == 4
-                    ? Icon(Icons.table_chart, color: Colors.black)
+                    ? Icon(Icons.table_chart, color: Colors.purple)
                     : Icon(Icons.table_chart, color: Colors.white),
                 label: 'Tabela',
-                backgroundColor: Colors.purple.shade600)
+                backgroundColor: Colors.grey[700])
           ],
         ));
   }

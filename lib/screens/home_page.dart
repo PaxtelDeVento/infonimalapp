@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:infonimalapp/helpers/helperVivos.dart';
 import 'package:infonimalapp/helpers/helperObito.dart';
 import 'package:infonimalapp/info.dart';
@@ -136,20 +137,27 @@ class HomePageState extends State<HomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.orange,
-        title: Text('Seja Bem-Vindo'),
+        backgroundColor: Colors.grey[700],
+        title: Text(
+          'Seja Bem-Vindo',
+          style: TextStyle(color: Colors.orange),
+        ),
         centerTitle: true,
         actions: [info(context, infoInicio)],
       ),
       body: Container(
-        color: Colors.grey[800],
         child: ListView(
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Container(
-                  color: Colors.orange,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                        bottomRight: Radius.circular(10),
+                        bottomLeft: Radius.circular(10)),
+                    color: Colors.grey,
+                  ),
                   height: 120,
                   width: deviceWidth,
                   child: Column(
@@ -175,68 +183,7 @@ class HomePageState extends State<HomePage> {
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [
-                            Colors.green.shade900,
-                            Colors.green.shade400
-                          ])),
-                  height: 190,
-                  width: 190,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Text(
-                        "PESO MÉDIO DOS ANIMAIS",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 25),
-                      ),
-                      Text(
-                        mediaPeso == 0
-                            ? '0 Kg'
-                            : mediaPeso!.toStringAsFixed(1) + ' Kg',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 50),
-                      )
-                    ],
-                  ),
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [
-                            Colors.green.shade900,
-                            Colors.green.shade400
-                          ])),
-                  height: 190,
-                  width: 190,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Text(
-                        "IDADE MÉDIA DOS ANIMAIS",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 25),
-                      ),
-                      Text(
-                        mediaDays == 0
-                            ? '0d'
-                            : mediaDays.toStringAsFixed(0) + 'd',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 50),
-                      )
-                    ],
-                  ),
-                )
-              ],
+              children: [pesoMedio(mediaPeso), idadeMedia(mediaDays)],
             ),
             Container(
               height: 10,
@@ -244,69 +191,8 @@ class HomePageState extends State<HomePage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [
-                            Colors.grey.shade800,
-                            Colors.grey.shade400
-                          ])),
-                  height: 190,
-                  width: 190,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Text(
-                        "IDADE MÉDIA DE ÓBITO",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 23),
-                      ),
-                      Text(
-                        mediaDaysObito == 0
-                            ? '0d'
-                            : mediaDaysObito.toStringAsFixed(0) + 'd',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 50),
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  height: 10,
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(10),
-                          bottomLeft: Radius.circular(10)),
-                      gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [
-                            Colors.grey.shade800,
-                            Colors.grey.shade400
-                          ])),
-                  height: 190,
-                  width: 190,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Text(
-                        "ÓBITOS",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 23),
-                      ),
-                      Text(
-                        "$countAnimaisObito",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 50),
-                      )
-                    ],
-                  ),
-                ),
+                idadeObitos(mediaDaysObito),
+                animaisObitos(countAnimaisObito)
               ],
             ),
             Container(
@@ -314,64 +200,7 @@ class HomePageState extends State<HomePage> {
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [
-                            Colors.green.shade900,
-                            Colors.green.shade400
-                          ])),
-                  height: 190,
-                  width: 190,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Text(
-                        "NASCIMENTOS",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 25),
-                      ),
-                      Text(
-                        "$nasc",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 50),
-                      )
-                    ],
-                  ),
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [
-                            Colors.green.shade900,
-                            Colors.green.shade400
-                          ])),
-                  height: 190,
-                  width: 190,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Text(
-                        "COMPRADAS",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 25),
-                      ),
-                      Text(
-                        "$compra",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 50),
-                      )
-                    ],
-                  ),
-                )
-              ],
+              children: [nascimentos(nasc), compradas(compra)],
             ),
             Container(
               height: 10,
@@ -381,4 +210,148 @@ class HomePageState extends State<HomePage> {
       ),
     );
   }
+}
+
+Container pesoMedio(x) {
+  return Container(
+    decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10), color: Colors.green.shade600),
+    height: 190,
+    width: 190,
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Text(
+          "PESO MÉDIO DOS ANIMAIS",
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 25),
+        ),
+        Text(
+          x == 0 ? '0 Kg' : x!.toStringAsFixed(1) + ' Kg',
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 50),
+        )
+      ],
+    ),
+  );
+}
+
+Container idadeMedia(x) {
+  return Container(
+    decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10), color: Colors.green.shade600),
+    height: 190,
+    width: 190,
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Text(
+          "IDADE MÉDIA DOS ANIMAIS",
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 25),
+        ),
+        Text(
+          x == 0 ? '0d' : x.toStringAsFixed(0) + 'd',
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 50),
+        )
+      ],
+    ),
+  );
+}
+
+Container idadeObitos(x) {
+  return Container(
+    decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10), color: Colors.red.shade600),
+    height: 190,
+    width: 190,
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Text(
+          "IDADE MÉDIA DE ÓBITO",
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 23),
+        ),
+        Text(
+          x == 0 ? '0d' : x.toStringAsFixed(0) + 'd',
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 50),
+        ),
+      ],
+    ),
+  );
+}
+
+Container animaisObitos(x) {
+  return Container(
+    decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10), color: Colors.red.shade600),
+    height: 190,
+    width: 190,
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Text(
+          "ÓBITOS",
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 23),
+        ),
+        Text(
+          "$x",
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 50),
+        )
+      ],
+    ),
+  );
+}
+
+Container nascimentos(x) {
+  return Container(
+    decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10), color: Colors.green.shade600),
+    height: 190,
+    width: 190,
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Text(
+          "NASCIMENTOS",
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 25),
+        ),
+        Text(
+          "$x",
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 50),
+        )
+      ],
+    ),
+  );
+}
+
+Container compradas(x) {
+  return Container(
+    decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10), color: Colors.green.shade600),
+    height: 190,
+    width: 190,
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Text(
+          "COMPRADAS",
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 25),
+        ),
+        Text(
+          "$x",
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 50),
+        )
+      ],
+    ),
+  );
 }

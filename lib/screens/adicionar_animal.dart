@@ -89,8 +89,11 @@ class AdicionarAnimalState extends State<AdicionarAnimal> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        backgroundColor: Colors.green.shade700,
-        title: Text('Cadastrar nova ' + raca + ' ' + sexo),
+        backgroundColor: Colors.grey[700],
+        title: Text(
+          'Cadastrar nova ' + raca + ' ' + sexo,
+          style: TextStyle(color: Colors.green),
+        ),
         centerTitle: true,
         actions: [info(context, infoAdicionar)],
       ),
